@@ -25,7 +25,7 @@ button.addEventListener( 'click', function() {
     var pingSection = document.getElementById('step3456');
 
     $.ajax({
-      url: 'http://first-ajax-api.herokuapp.com/pingf',
+      url: 'http://first-ajax-api.herokuapp.com/ping',
       method: 'GET',
       dataType: 'HTML',
     }).done(function (responseData){
@@ -34,11 +34,12 @@ button.addEventListener( 'click', function() {
     }).fail(function () {
   //In this callback, everyone panic! Our request has failed!
   //Quickly, apologize to the user and try to fix it!
-      var error = "So sorry, your request has failed!";
+      var error = "So sorry, I'll try harder next time";
       console.log(error);
       pingSection.append(error);
+    }).always(function() {
+      var message = " Hey, the request is finished!";
+      console.log(message);
+    });
   });
-});
-
-
 });
