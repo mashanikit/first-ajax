@@ -12,7 +12,7 @@ button.addEventListener( 'click', function() {
   $.ajax({
     url: 'http://first-ajax-api.herokuapp.com/',
     method: 'GET',
-    dataType: 'HTML',
+    dataType: 'text',
     }).done(function (responseData) {
   //Here in the callback, we have a variable called responseData
   //that holds the content of the server's response,
@@ -27,7 +27,7 @@ button.addEventListener( 'click', function() {
     $.ajax({
       url: 'http://first-ajax-api.herokuapp.com/ping',
       method: 'GET',
-      dataType: 'HTML',
+      dataType: 'text',
     }).done(function (responseData){
       console.log( responseData );
       pingSection.append( responseData );
@@ -38,8 +38,24 @@ button.addEventListener( 'click', function() {
       console.log(error);
       pingSection.append(error);
     }).always(function() {
-      var message = " Hey, the request is finished!";
+      var message = "Hey, the request is finished!";
       console.log(message);
     });
+  });
+
+  var countButton = document.getElementById('count');
+  countButton.addEventListener('click', function(){
+
+    var countSection = document.getElementById('step7');
+
+    $.ajax({
+      url:'http://first-ajax-api.herokuapp.com/count',
+      method:'GET',
+      dataType:'text',
+    }).done(function(responseData){
+      console.log(responseData);
+      countSection.append(responseData);
+    });
+
   });
 });
