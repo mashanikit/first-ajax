@@ -74,6 +74,22 @@ button.addEventListener( 'click', function() {
       console.log(responseData);
       timeSection.append(responseData);
     });
+  });
 
+  var carButton = document.getElementById('car');
+  carButton.addEventListener('click', function(){
+
+    var carSection = document.getElementById('step9');
+
+    $.ajax({
+      url:'http://first-ajax-api.herokuapp.com/a_car',
+      method: 'GET',
+      dataType: 'html',
+    }).done(function(responseData){
+      console.log(responseData);
+      var carList = document.createElement('ul');
+      carList.innerHTML = responseData;
+      carSection.append(carList);  
+    });
   });
 });
