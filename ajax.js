@@ -56,6 +56,24 @@ button.addEventListener( 'click', function() {
       console.log(responseData);
       countSection.append(responseData);
     });
+  });
+
+  var timeButton = document.getElementById('time');
+  timeButton.addEventListener('click', function(){
+
+    var timeSection = document.getElementById('step8');
+
+    $.ajax({
+      url:'http://first-ajax-api.herokuapp.com/time',
+      method: 'GET',
+      data: {
+        timezone: 'Pacific/Honolulu'
+      },
+      dateType:'text',
+    }).done(function(responseData){
+      console.log(responseData);
+      timeSection.append(responseData);
+    });
 
   });
 });
